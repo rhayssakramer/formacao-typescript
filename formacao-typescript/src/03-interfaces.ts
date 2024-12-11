@@ -8,6 +8,7 @@ type robot = {
 interface robot2 { 
     readonly id: number | string,
     name: string,
+    sayHello(): string;
 }
 
 const bot1: robot = {
@@ -17,7 +18,10 @@ const bot1: robot = {
 
 const bot2: robot2 = {
     id: 1,
-    name: 'Wall-E'
+    name: 'Wall-E',
+    sayHello: function (): string{
+        throw new Error("Function not implemented.");
+    }
 }
 
 console.log(bot1);
@@ -41,4 +45,10 @@ class Pessoa implements robot2{
         this.id = id;
         this.name = name;
     }
+    sayHello(): string{
+        return `Hello I'm ${this.name}!`;
+    }
 }
+
+const p = new Pessoa(1, "Rhayssa")
+console.log(p.sayHello());
